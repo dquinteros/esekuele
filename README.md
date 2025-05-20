@@ -31,7 +31,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Run the test suite with ``pytest -q`` once dependencies are installed.
+Run the test suite with ``./pytest -q`` once dependencies are installed.
 
 ## Usage Example
 Run the CLI with a schema and prompt to generate a query:
