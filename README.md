@@ -21,3 +21,10 @@ The planned code layout is:
 - `esekuele/generator.py` – logic for calling the language model and formatting the resulting SQL
 
 Additional modules and tests will be added as the project evolves.
+
+## Usage Example
+Run the CLI with a schema and prompt to generate a query:
+
+```bash
+python -m esekuele.cli --schema "users(id int, name text)" "list all users"
+```
