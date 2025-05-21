@@ -1,6 +1,6 @@
 # Esekuele
 
-Esekuele is a command line tool designed to generate SQL queries from natural language prompts. The CLI accepts a database engine name, a SQL schema describing the tables and columns, and a prompt that states a question to be answered.
+Esekuele is a command line tool designed to generate SQL queries from natural language prompts. The CLI accepts a database engine name, a SQL schema describing the tables and columns, a provider name, and a prompt that states a question to be answered.
 
 Given this information, the application will produce a SQL query suitable for the specified engine that should resolve the question described in the prompt.
 
@@ -21,6 +21,10 @@ The planned code layout is:
 - `esekuele/generator.py` – logic for calling the language model and formatting the resulting SQL
 
 Additional modules and tests will be added as the project evolves.
+
+The application supports multiple query generation providers. The default
+``regex`` provider uses simple pattern matching while ``openai`` delegates
+the task to the OpenAI API. Select a provider with the ``--provider`` option.
 
 ## Installation
 Create a virtual environment and install dependencies from ``requirements.txt``:
@@ -44,4 +48,10 @@ You can also count rows:
 
 ```bash
 python -m esekuele.cli --schema "orders(id int, amount int)" "how many orders"
+```
+
+Use the OpenAI provider:
+
+```bash
+python -m esekuele.cli --provider openai --schema "users(id int, name text)" "list all users"
 ```
