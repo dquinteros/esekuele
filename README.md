@@ -6,7 +6,8 @@ Given this information, the application will produce a SQL query suitable for th
 
 ## Project Goals
 - Provide a simple command line interface.
-- Accept engine name and schema as inputs.
+- Accept engine name and schema as inputs. The schema may be given
+  directly or loaded from a `.sql` file.
 - Translate a natural language question into a SQL query.
 
 Development is currently in a planning phase. Implementation details and usage instructions will be added as the project evolves.
@@ -44,4 +45,11 @@ You can also count rows:
 
 ```bash
 python -m esekuele.cli --schema "orders(id int, amount int)" "how many orders"
+```
+
+You can also provide the schema in a file:
+
+```bash
+echo "products(id int, price int)" > schema.sql
+python -m esekuele.cli --schema schema.sql "list all products"
 ```
