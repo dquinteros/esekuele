@@ -39,3 +39,9 @@ Run the CLI with a schema and prompt to generate a query:
 ```bash
 python -m esekuele.cli --schema "users(id int, name text)" "list all users"
 ```
+
+You can also count rows:
+
+```bash
+python -m esekuele.cli --schema "orders(id int, amount int)" "how many orders"
+```

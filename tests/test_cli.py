@@ -17,3 +17,11 @@ def test_generate_select_all():
     assert result.exit_code == 0
     assert 'SELECT * FROM users;' in result.output
 
+
+def test_generate_count():
+    runner = CliRunner()
+    schema = 'orders(id int, amount int)'
+    result = runner.invoke(main, ['--schema', schema, 'how many orders'])
+    assert result.exit_code == 0
+    assert 'SELECT COUNT(*) FROM orders;' in result.output
+
