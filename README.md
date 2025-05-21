@@ -31,11 +31,17 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Run the test suite with ``pytest -q`` once dependencies are installed.
+Run the test suite with ``./pytest -q`` once dependencies are installed.
 
 ## Usage Example
 Run the CLI with a schema and prompt to generate a query:
 
 ```bash
 python -m esekuele.cli --schema "users(id int, name text)" "list all users"
+```
+
+You can also count rows:
+
+```bash
+python -m esekuele.cli --schema "orders(id int, amount int)" "how many orders"
 ```
