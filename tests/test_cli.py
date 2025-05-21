@@ -25,3 +25,21 @@ def test_generate_count():
     assert result.exit_code == 0
     assert 'SELECT COUNT(*) FROM orders;' in result.output
 
+
+def test_schema_from_file():
+    runner = CliRunner()
+    import tempfile
+    import os
+    with tempfile.NamedTemporaryFile('w', suffix='.sql', delete=False) as tmp:
+        tmp.write('items(id int)')
+        path = tmp.name
+    try:
+        result = runner.invoke(
+            main,
+            ['--schema', path, '--engine', 'sqlite', 'list all items']
+        )
+        assert result.exit_code == 0
+        assert 'SELECT * FROM items;' in result.output
+    finally:
+        os.remove(path)
+
